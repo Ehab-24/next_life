@@ -33,31 +33,17 @@ class AccountPage extends StatelessWidget {
                   ),
                 ),
                 Space.h32,
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: 172,
-                      child: MTextFormField(labelText: "Username"),
+                    MElevatedButton(
+                      text: "Username",
+                      onPressed: () =>
+                          Navigator.of(context).pushNamed('/username'),
                     ),
-                    // TODO: change to calender
-                    SizedBox(
-                      width: 172,
-                      child: MTextFormField(labelText: "Date of birth"),
-                    ),
-                  ],
-                ),
-                Space.h32,
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      width: 172,
-                      child: MTextFormField(labelText: "Gender"),
-                    ),
-                    SizedBox(
-                      width: 172,
-                      child: MTextFormField(labelText: "Password"),
+                    MElevatedButton(
+                      text: "Date of birth",
+                      onPressed: () => Navigator.of(context).pushNamed('/dob'),
                     ),
                   ],
                 ),
@@ -66,21 +52,30 @@ class AccountPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      width: 172,
-                      child: MElevatedIconButton(
-                        text: "Notification",
-                        onPressed: () {},
-                        iconData: Icons.notifications,
-                      ),
+                      width: 144,
+                      child: MTextFormField(labelText: "Gender"),
                     ),
+                    Space.w8,
                     SizedBox(
-                      width: 172,
-                      child: MElevatedIconButton(
-                        text: "Appearance",
-                        onPressed: () =>
-                            pushScreen(context, '/change-appearance'),
-                        iconData: Icons.color_lens,
-                      ),
+                      width: 144,
+                      child: MTextFormField(labelText: "Password"),
+                    ),
+                  ],
+                ),
+                Space.h32,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    MElevatedIconButton(
+                      text: "Notification",
+                      onPressed: () {},
+                      iconData: Icons.notifications,
+                    ),
+                    MElevatedIconButton(
+                      text: "Appearance",
+                      onPressed: () =>
+                          pushScreen(context, '/change-appearance'),
+                      iconData: Icons.color_lens,
                     ),
                   ],
                 ),

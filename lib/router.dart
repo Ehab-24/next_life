@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:next_life/screens/account.dart';
 import 'package:next_life/screens/change_appearance.dart';
 import 'package:next_life/screens/default.dart';
+import 'package:next_life/screens/dob.dart';
 import 'package:next_life/screens/error.dart';
 import 'package:next_life/screens/help_and_support.dart';
 import 'package:next_life/screens/home.dart';
 import 'package:next_life/screens/settings.dart';
 import 'package:next_life/screens/test.dart';
+import 'package:next_life/screens/username.dart';
 
 import 'layouts/home.dart';
 
@@ -30,6 +32,10 @@ class RouteGenerator {
         return _generateRoute(const ChangeAppearancePage());
       case "/help-and-support":
         return _generateRoute(const HelpAndSupportPage());
+      case "/dob":
+        return _generateRoute(const DOBPage());
+      case "/username":
+        return _generateRoute(const UsernamePage());
       default:
         return _generateRoute(const ErrorPage(message: "404 Not Found"));
     }
