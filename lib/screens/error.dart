@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../styles/text.dart';
+
 class ErrorPage extends StatelessWidget {
   final String message;
 
@@ -7,6 +9,11 @@ class ErrorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Center(
+      child: Text(
+        message,
+        style: TextStyles.xl4,
+      ),
+    );
   }
 }

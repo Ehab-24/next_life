@@ -24,11 +24,11 @@ class SettingsPage extends StatelessWidget {
                 iconData: Icons.person_2_outlined,
               ),
             ),
-            Space.w32,
+            Space.w8,
             Expanded(
               child: MElevatedIconButtonLarge(
                 text: "Help & Support",
-                onPressed: () {},
+                onPressed: () => pushScreen(context, '/help-and-support'),
                 iconData: Icons.help_outline_outlined,
               ),
             ),

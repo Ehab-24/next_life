@@ -65,7 +65,7 @@ class _Header extends StatelessWidget {
                 ),
                 Space.w8,
                 Text(
-                  "Welcome, $username",
+                  username,
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 )
               ],
