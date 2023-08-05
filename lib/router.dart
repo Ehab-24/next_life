@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:next_life/screens/account.dart';
 import 'package:next_life/screens/change_appearance.dart';
+import 'package:next_life/screens/change_password.dart';
 import 'package:next_life/screens/default.dart';
 import 'package:next_life/screens/dob.dart';
 import 'package:next_life/screens/error.dart';
@@ -39,6 +40,8 @@ class RouteGenerator {
         return _generateRoute(const UsernamePage());
       case "/gender":
         return _generateRoute(const GenderPage());
+      case "/change-password":
+        return _generateRoute(const ChangePasswordPage());
       default:
         return _generateRoute(const ErrorPage(message: "404 Not Found"));
     }

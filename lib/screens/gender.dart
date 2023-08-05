@@ -26,6 +26,7 @@ class GenderPage extends StatelessWidget {
                   style: TextStyles.md,
                 ),
                 Space.h40,
+                // TODO: change to a selector dialog
                 MTextFormField(labelText: "Gender"),
                 Divider(height: 80),
                 FractionallySizedBox(

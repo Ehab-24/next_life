@@ -18,8 +18,13 @@ class MTextFormField extends StatelessWidget {
         // decoration: InputStyles.textInput(labelText),
         decoration: InputDecoration(
           labelText: labelText,
+          labelStyle: TextStyle(
+            color: Theme.of(context).colorScheme.primary.withOpacity(0.8),
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
           filled: true,
-          fillColor: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+          fillColor: Theme.of(context).colorScheme.primary.withOpacity(0.08),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
