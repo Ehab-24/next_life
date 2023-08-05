@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:next_life/constants/spacing.dart';
 import 'package:next_life/styles/text.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
-import 'package:next_life/widgets/buttons/inputs/text_fields.dart';
+
+import '../../../../../styles/inputs.dart';
 
 class MyLifeHobbies extends StatelessWidget {
   const MyLifeHobbies({super.key});
@@ -21,11 +23,43 @@ class MyLifeHobbies extends StatelessWidget {
                   Text("Hobbies", style: TextStyles.md),
                   Space.h20,
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Expanded(child: MTextFormField(labelText: "Housing")),
-                      Space.w8,
                       Expanded(
-                          child: MTextFormField(labelText: "Type of housing")),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Hobby description"),
+                            Space.h2,
+                            SizedBox(
+                              height: 44,
+                              child: TextField(
+                                decoration: InputStyles.textInput(context, ""),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Space.w20,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Hours / week"),
+                            Space.h2,
+                            SizedBox(
+                              height: 44,
+                              child: TextField(
+                                keyboardType: TextInputType.number,
+                                inputFormatters: <TextInputFormatter>[
+                                  FilteringTextInputFormatter.digitsOnly
+                                ],
+                                decoration: InputStyles.textInput(context, ""),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                       Space.w8,
                       // Delete button
                       IconButton(
@@ -40,7 +74,7 @@ class MyLifeHobbies extends StatelessWidget {
                   Divider(height: 40),
                   TextButton(
                     onPressed: () {},
-                    child: Text("Add extra housing information"),
+                    child: Text("Add additional hobby"),
                   ),
                   Divider(height: 40),
                   SizedBox(
