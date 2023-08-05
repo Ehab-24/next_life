@@ -5,29 +5,20 @@ import '../../styles/text.dart';
 
 class MElevatedButton extends StatelessWidget {
   final String text;
+  final Color? backgroundColor;
   final void Function()? onPressed;
 
   const MElevatedButton({
     required this.text,
     required this.onPressed,
+    this.backgroundColor,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        minimumSize: const Size(80, 52),
-        backgroundColor: Colors.purple.shade400,
-        foregroundColor: Colors.white,
-        // surfaceTintColor: Colors.purple,
-        shape: RoundedRectangleBorder(
-          side: BorderSide(
-            color: Colors.purple.shade500.withOpacity(0.1),
-          ),
-          borderRadius: BorderRadius.circular(10),
-        ),
-      ),
+    return FilledButton(
+      style: ButtonStyles.elevatedButton(backgroundColor),
       onPressed: onPressed,
       child: Text(
         text,
@@ -40,20 +31,22 @@ class MElevatedButton extends StatelessWidget {
 class MElevatedIconButton extends StatelessWidget {
   final String text;
   final IconData iconData;
+  final Color? backgroundColor;
   final void Function()? onPressed;
 
   const MElevatedIconButton({
     required this.text,
     required this.onPressed,
     required this.iconData,
+    this.backgroundColor,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return FilledButton(
       onPressed: onPressed,
-      style: ButtonStyles.elevatedButton,
+      style: ButtonStyles.elevatedButton(backgroundColor),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -89,9 +82,11 @@ class MElevatedIconButtonLarge extends StatelessWidget {
       onPressed: onPressed,
       style: ButtonStyles.elevatedButtonLarge,
       icon: Icon(iconData),
-      label: Text(
-        text,
-        style: TextStyles.sm,
+      label: Flexible(
+        child: Text(
+          text,
+          style: TextStyles.sm,
+        ),
       ),
     );
   }

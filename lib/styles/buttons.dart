@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 
 class ButtonStyles {
-  static final elevatedButton = ElevatedButton.styleFrom(
-    minimumSize: const Size(80, 52),
-    shape: RoundedRectangleBorder(
-      side: BorderSide(
-        color: Colors.purple.shade500.withOpacity(0.1),
-      ),
-      borderRadius: BorderRadius.circular(10),
-    ),
-  );
+  static ButtonStyle elevatedButton(Color? backgroundColor) =>
+      ElevatedButton.styleFrom(
+        minimumSize: const Size(80, 52),
+        backgroundColor: backgroundColor,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            width: 3,
+            color: Colors.teal.shade300.withOpacity(0.5),
+          ),
+          borderRadius: BorderRadius.circular(10),
+        ),
+      );
 
   static final elevatedButtonLarge = ElevatedButton.styleFrom(
     minimumSize: const Size(172, 64),
     shape: RoundedRectangleBorder(
       side: BorderSide(
-        color: Colors.purple.shade500.withOpacity(0.1),
+        width: 3,
+        color: Colors.teal.shade300.withOpacity(0.5),
       ),
       borderRadius: BorderRadius.circular(10),
     ),

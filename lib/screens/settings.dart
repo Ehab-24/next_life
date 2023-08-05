@@ -16,21 +16,16 @@ class SettingsPage extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              child: MElevatedIconButtonLarge(
-                text: "Account",
-                // onPressed: () => pushScreen(context, '/account'),
-                onPressed: () => pushScreen(context, '/account'),
-                iconData: Icons.person_2_outlined,
-              ),
+            MElevatedIconButtonLarge(
+              text: "Account",
+              onPressed: () => pushScreen(context, '/account'),
+              iconData: Icons.person_2_outlined,
             ),
-            Space.w8,
-            Expanded(
-              child: MElevatedIconButtonLarge(
-                text: "Help & Support",
-                onPressed: () => pushScreen(context, '/help-and-support'),
-                iconData: Icons.help_outline_outlined,
-              ),
+            Spacer(),
+            MElevatedIconButtonLarge(
+              text: "Help & Support",
+              onPressed: () => pushScreen(context, '/help-and-support'),
+              iconData: Icons.help_outline_outlined,
             ),
           ],
         ),

@@ -16,7 +16,7 @@ class HomeLayout extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              color: Colors.purple.shade500,
+              color: Theme.of(context).colorScheme.primary.withOpacity(0.8),
               padding: const EdgeInsets.all(20),
               child: _Header(),
             ),
@@ -67,17 +67,16 @@ class _Header extends StatelessWidget {
                 Text(
                   username,
                   style: TextStyle(fontSize: 18, color: Colors.white),
+                  softWrap: false,
                 )
               ],
             ),
-            MElevatedIconButton(
-              text: "Home",
-              onPressed: () => Navigator.popUntil(
-                context,
+            IconButton.filled(
+              onPressed: () => Navigator.of(context).popUntil(
                 (route) => route.isFirst,
               ),
-              iconData: Icons.home_outlined,
-            )
+              icon: Icon(Icons.home_outlined),
+            ),
           ],
         ),
         Space.h20,
@@ -89,6 +88,7 @@ class _Header extends StatelessWidget {
               child: MElevatedIconButton(
                 text: "Path Finder",
                 onPressed: () {},
+                backgroundColor: Theme.of(context).colorScheme.secondary,
                 iconData: Icons.manage_search_outlined,
               ),
             ),
@@ -97,6 +97,7 @@ class _Header extends StatelessWidget {
               child: MElevatedIconButton(
                 text: "Store",
                 onPressed: () {},
+                backgroundColor: Theme.of(context).colorScheme.secondary,
                 iconData: Icons.store_outlined,
               ),
             )
@@ -104,7 +105,11 @@ class _Header extends StatelessWidget {
         ),
         Space.h20,
         // TODO: change to dropdown button
-        MElevatedButton(text: "Profile Select", onPressed: () {})
+        MElevatedButton(
+          text: "Profile Select",
+          onPressed: () {},
+          backgroundColor: Theme.of(context).colorScheme.secondary,
+        )
       ],
     );
   }

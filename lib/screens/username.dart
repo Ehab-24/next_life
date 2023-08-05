@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:next_life/constants/spacing.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
 import 'package:next_life/widgets/buttons/inputs/text_fields.dart';
-import 'package:next_life/widgets/highlighted_text.dart';
+import 'package:next_life/widgets/texts.dart';
 
 import '../styles/text.dart';
 
