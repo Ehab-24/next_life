@@ -3,9 +3,27 @@ import 'package:next_life/constants/spacing.dart';
 import 'package:next_life/styles/text.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
 import 'package:next_life/widgets/buttons/inputs/text_fields.dart';
+import 'package:next_life/widgets/dropdown_button.dart';
 
-class MyLifeInternetSpeed extends StatelessWidget {
+class MyLifeInternetSpeed extends StatefulWidget {
   const MyLifeInternetSpeed({super.key});
+
+  @override
+  State<MyLifeInternetSpeed> createState() => _MyLifeInternetSpeedState();
+}
+
+class _MyLifeInternetSpeedState extends State<MyLifeInternetSpeed> {
+  String _selectInternetSpeed = "";
+
+  final List<String> options = [
+    "Slow - 1 Mbps to 5 Mbps",
+    "Medium - 5 Mbps to 10 Mbps",
+    "Fast - 10 Mbps to 15 Mbps",
+  ];
+
+  void _save() {
+    // implement save logic
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,32 +38,27 @@ class MyLifeInternetSpeed extends StatelessWidget {
                 children: [
                   Text("Internet Speed", style: TextStyles.md),
                   Space.h20,
-                  Row(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Expanded(child: MTextFormField(labelText: "Housing")),
-                      Space.w8,
-                      Expanded(
-                          child: MTextFormField(labelText: "Type of housing")),
-                      Space.w8,
-                      // Delete button
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.delete_forever_outlined,
-                          color: Colors.red.withOpacity(0.6),
-                        ),
+                      MDropdownButton(
+                        value: _selectInternetSpeed.isEmpty
+                            ? options[0]
+                            : _selectInternetSpeed,
+                        onChange: (value) => setState(() {
+                          _selectInternetSpeed = value ?? options[0];
+                        }),
+                        options: options,
                       )
                     ],
                   ),
-                  Divider(height: 40),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text("Add extra housing information"),
-                  ),
-                  Divider(height: 40),
+                  Space.h20,
                   SizedBox(
                     width: 172,
-                    child: MElevatedButton(text: "Save", onPressed: () {}),
+                    child: MElevatedButton(
+                      text: "Save",
+                      onPressed: _save,
+                    ),
                   )
                 ],
               ),
