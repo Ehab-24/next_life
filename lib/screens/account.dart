@@ -40,48 +40,66 @@ class AccountPage extends StatelessWidget {
                 ),
                 Space.h32,
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    MElevatedButton(
-                      text: "Username",
-                      onPressed: () =>
-                          Navigator.of(context).pushNamed('/username'),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          // TODO: change to outlined button
+                          MElevatedButton(
+                            text: "Username",
+                            onPressed: () =>
+                                Navigator.of(context).pushNamed('/username'),
+                          ),
+                          Space.h8,
+                          MElevatedButton(
+                            text: "Gender",
+                            onPressed: () => pushScreen(context, '/gender'),
+                          ),
+                        ],
+                      ),
                     ),
-                    MElevatedButton(
-                      text: "Date of birth",
-                      onPressed: () => Navigator.of(context).pushNamed('/dob'),
+                    Space.w32,
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          MElevatedButton(
+                            text: "Date of birth",
+                            onPressed: () =>
+                                Navigator.of(context).pushNamed('/dob'),
+                          ),
+                          Space.h8,
+                          MElevatedButton(
+                            text: "Password",
+                            onPressed: () =>
+                                pushScreen(context, '/change-password'),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
                 Space.h32,
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: 144,
-                      child: MTextFormField(labelText: "Gender"),
+                    Expanded(
+                      child: MElevatedIconButton(
+                        text: "Notification",
+                        onPressed: () {},
+                        iconData: Icons.notifications,
+                      ),
                     ),
-                    Space.w8,
-                    SizedBox(
-                      width: 144,
-                      child: MTextFormField(labelText: "Password"),
-                    ),
-                  ],
-                ),
-                Space.h32,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    MElevatedIconButton(
-                      text: "Notification",
-                      onPressed: () {},
-                      iconData: Icons.notifications,
-                    ),
-                    MElevatedIconButton(
-                      text: "Appearance",
-                      onPressed: () =>
-                          pushScreen(context, '/change-appearance'),
-                      iconData: Icons.color_lens,
+                    Space.w32,
+                    Expanded(
+                      child: MElevatedIconButton(
+                        text: "Appearance",
+                        onPressed: () =>
+                            pushScreen(context, '/change-appearance'),
+                        iconData: Icons.color_lens,
+                      ),
                     ),
                   ],
                 ),

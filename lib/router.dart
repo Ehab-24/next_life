@@ -4,6 +4,7 @@ import 'package:next_life/screens/change_appearance.dart';
 import 'package:next_life/screens/default.dart';
 import 'package:next_life/screens/dob.dart';
 import 'package:next_life/screens/error.dart';
+import 'package:next_life/screens/gender.dart';
 import 'package:next_life/screens/help_and_support.dart';
 import 'package:next_life/screens/home.dart';
 import 'package:next_life/screens/settings.dart';
@@ -36,6 +37,8 @@ class RouteGenerator {
         return _generateRoute(const DOBPage());
       case "/username":
         return _generateRoute(const UsernamePage());
+      case "/gender":
+        return _generateRoute(const GenderPage());
       default:
         return _generateRoute(const ErrorPage(message: "404 Not Found"));
     }

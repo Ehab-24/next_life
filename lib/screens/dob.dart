@@ -13,43 +13,49 @@ class DOBPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Align(
-              alignment: Alignment.center,
-              child: const Text("Date of birth"),
-            ),
-            Space.h20,
-            HighlightedtText(text: dateOfBirth),
-            Divider(
-              height: 40,
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: const Text("Pick a new date"),
-            ),
-            Space.h20,
-            Align(
-              alignment: Alignment.center,
-              child: SizedBox(
-                height: 40,
-                child: DatePicker(
-                  text: "Select new date",
-                  restorationId: 'main',
+    return Column(
+      children: [
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Align(
+                  alignment: Alignment.center,
+                  child: const Text("Date of birth"),
                 ),
-              ),
+                Space.h20,
+                HighlightedtText(text: dateOfBirth),
+                Divider(
+                  height: 40,
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: const Text("Pick a new date"),
+                ),
+                Space.h20,
+                Align(
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                    height: 40,
+                    child: DatePicker(
+                      text: "Select new date",
+                      restorationId: 'main',
+                    ),
+                  ),
+                ),
+                Divider(
+                  height: 40,
+                ),
+                MElevatedButton(text: "Save", onPressed: () {})
+              ],
             ),
-            Divider(
-              height: 40,
-            ),
-            MElevatedButton(text: "Save", onPressed: () {})
-          ],
+          ),
         ),
-      ),
+        Expanded(child: SizedBox.shrink()),
+      ],
     );
   }
 }
