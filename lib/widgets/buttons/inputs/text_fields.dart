@@ -13,7 +13,7 @@ class MTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 52,
+      height: 44,
       child: TextFormField(
         decoration: InputStyles.textInput(context, labelText),
       ),

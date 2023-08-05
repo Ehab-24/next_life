@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:next_life/constants/spacing.dart';
 import 'package:next_life/styles/text.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
-import 'package:next_life/widgets/buttons/inputs/text_fields.dart';
+
+import '../../../../../styles/inputs.dart';
 
 class MyLifeAddress extends StatelessWidget {
   const MyLifeAddress({super.key});
@@ -20,29 +21,74 @@ class MyLifeAddress extends StatelessWidget {
                 children: [
                   Text("Address", style: TextStyles.md),
                   Space.h20,
-                  Row(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(child: MTextFormField(labelText: "Housing")),
-                      Space.w8,
-                      Expanded(
-                          child: MTextFormField(labelText: "Type of housing")),
-                      Space.w8,
-                      // Delete button
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.delete_forever_outlined,
-                          color: Colors.red.withOpacity(0.6),
+                      Text("Street address"),
+                      Space.h2,
+                      SizedBox(
+                        height: 44,
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          decoration: InputStyles.textInput(context, ""),
                         ),
-                      )
+                      ),
                     ],
                   ),
-                  Divider(height: 40),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text("Add extra housing information"),
+                  Space.h20,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("ZIP code"),
+                      Space.h2,
+                      SizedBox(
+                        height: 44,
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          decoration: InputStyles.textInput(context, ""),
+                        ),
+                      ),
+                    ],
                   ),
-                  Divider(height: 40),
+                  Space.h20,
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("City"),
+                            Space.h2,
+                            SizedBox(
+                              height: 44,
+                              child: TextField(
+                                keyboardType: TextInputType.number,
+                                decoration: InputStyles.textInput(context, ""),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Space.w20,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("State"),
+                            Space.h2,
+                            SizedBox(
+                              height: 44,
+                              child: TextField(
+                                keyboardType: TextInputType.number,
+                                decoration: InputStyles.textInput(context, ""),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Space.h32,
                   SizedBox(
                     width: 172,
                     child: MElevatedButton(text: "Save", onPressed: () {}),
