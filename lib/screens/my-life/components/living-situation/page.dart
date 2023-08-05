@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:next_life/screens/personal_information/components/double_text.dart';
+import 'package:next_life/screens/my-life/components/double_text.dart';
+import 'package:next_life/screens/my-life/page.dart';
+import 'package:next_life/utils.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
 
 class LivingSituation extends StatelessWidget {
-  const LivingSituation({super.key});
+  const LivingSituation({super.key, required this.setTab});
+
+  final void Function(String) setTab;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +21,7 @@ class LivingSituation extends StatelessWidget {
             DoubleText(
               title1: "Housing",
               text1: "Edit Housing",
+              onPressed1: () => setTab(SelectedTab.livingSituationHousing),
               title2: "transportation",
               text2: "Edit Transportation",
             ),

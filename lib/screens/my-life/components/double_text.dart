@@ -10,12 +10,16 @@ class DoubleText extends StatelessWidget {
     required this.text1,
     required this.title2,
     required this.text2,
+    this.onPressed1,
+    this.onPressed2,
   });
 
   final String title1;
   final String title2;
   final String text1;
   final String text2;
+  final void Function()? onPressed1;
+  final void Function()? onPressed2;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,7 @@ class DoubleText extends StatelessWidget {
             Text(title1, style: TextStyles.sm),
             Space.h2,
             TextButton(
-              onPressed: () {},
+              onPressed: onPressed1,
               style: TextButton.styleFrom(padding: EdgeInsets.zero),
               child: Text(
                 text1,
@@ -47,7 +51,7 @@ class DoubleText extends StatelessWidget {
             Text(title2, style: TextStyles.sm),
             Space.h2,
             TextButton(
-              onPressed: () {},
+              onPressed: onPressed2,
               style: TextButton.styleFrom(padding: EdgeInsets.zero),
               child: Text(
                 text2,

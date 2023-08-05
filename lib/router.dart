@@ -8,8 +8,9 @@ import 'package:next_life/screens/error.dart';
 import 'package:next_life/screens/gender.dart';
 import 'package:next_life/screens/help_and_support.dart';
 import 'package:next_life/screens/home.dart';
+import 'package:next_life/screens/my-life/components/living-situation/sub-pages/housing.dart';
 import 'package:next_life/screens/pathfinder_report.dart';
-import 'package:next_life/screens/personal_information/page.dart';
+import 'package:next_life/screens/my-life/page.dart';
 import 'package:next_life/screens/settings.dart';
 import 'package:next_life/screens/test.dart';
 import 'package:next_life/screens/username.dart';
@@ -46,8 +47,8 @@ class RouteGenerator {
         return _generateRoute(const ChangePasswordPage());
       case "/pathfinder-report":
         return _generateRoute(PathFinderReport());
-      case "/personal-information":
-        return _generateRoute(PersonalInformation());
+      case "/my-life":
+        return _generateRoute(MyLife());
       default:
         return _generateRoute(const ErrorPage(message: "404 Not Found"));
     }

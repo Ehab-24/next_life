@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:next_life/constants/spacing.dart';
 import 'package:next_life/screens/error.dart';
-import 'package:next_life/screens/personal_information/components/tabs/living_situation.dart';
+import 'package:next_life/screens/my-life/components/living-situation/page.dart';
+import 'package:next_life/screens/my-life/components/living-situation/sub-pages/housing.dart';
 import 'package:next_life/styles/text.dart';
 import 'package:next_life/widgets/texts.dart';
 
 import 'components/tab_button.dart';
 import 'components/tabs/personal_information.dart';
 
-class PersonalInformation extends StatefulWidget {
-  PersonalInformation({super.key});
+class MyLife extends StatefulWidget {
+  MyLife({super.key});
 
   @override
-  State<PersonalInformation> createState() => _PersonalInformationState();
+  State<MyLife> createState() => _MyLifeState();
 }
 
-class _PersonalInformationState extends State<PersonalInformation> {
+class SelectedTab {
+  static const personalInformation = 'personal-information';
+  static const livingSituation = 'living-situation';
+  static const livingSituationHousing = 'living-situation/housing';
+  static const educationCategory = 'education-category';
+}
+
+class _MyLifeState extends State<MyLife> {
   final String userCareer =
       "Computer Scientist"; // actual user career should be fetched from database
   final String username =
@@ -26,20 +34,35 @@ class _PersonalInformationState extends State<PersonalInformation> {
       "Male"; // actual user gender should be fetched from database
   final int userAge = 24; // actual user age should be fetched from database
 
-  int _selectedTabIndex = 0;
+  String _selectedTab = SelectedTab.personalInformation;
+
+  void setSelectedTab(String tab) {
+    setState(() {
+      _selectedTab = tab;
+    });
+  }
+
+  // Check which tab button is currently active
+  bool _isActive(String pathname) {
+    print(_selectedTab);
+    print(pathname);
+    return _selectedTab.contains(pathname);
+  }
 
   Widget _getActiveTab() {
-    switch (_selectedTabIndex) {
-      case 0:
+    switch (_selectedTab) {
+      case SelectedTab.personalInformation:
         return PersonalInformationTab(
           username: username,
           userAge: userAge,
           userEmail: userEmail,
           userGender: userGender,
         );
-      case 1:
-        return LivingSituation();
-      case 2:
+      case SelectedTab.livingSituation:
+        return LivingSituation(setTab: setSelectedTab);
+      case SelectedTab.livingSituationHousing:
+        return MyLifeHousing();
+      case SelectedTab.educationCategory:
         return PersonalInformationTab(
           username: username,
           userAge: userAge,
@@ -47,7 +70,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
           userGender: userGender,
         );
       default:
-        return ErrorPage(message: "Unexpected tab index: $_selectedTabIndex");
+        return ErrorPage(message: "Unexpected tab index: $_selectedTab");
     }
   }
 
@@ -85,25 +108,25 @@ class _PersonalInformationState extends State<PersonalInformation> {
                 Space.w20,
                 TabButton(
                   text: "Personal Information",
-                  isActive: _selectedTabIndex == 0,
+                  isActive: _isActive(SelectedTab.personalInformation),
                   onPressed: () => setState(() {
-                    _selectedTabIndex = 0;
+                    _selectedTab = SelectedTab.personalInformation;
                   }),
                 ),
                 Space.w20,
                 TabButton(
                   text: "Living Situation",
-                  isActive: _selectedTabIndex == 1,
+                  isActive: _isActive(SelectedTab.livingSituation),
                   onPressed: () => setState(() {
-                    _selectedTabIndex = 1;
+                    _selectedTab = SelectedTab.livingSituation;
                   }),
                 ),
                 Space.w20,
                 TabButton(
                   text: "Education Category",
-                  isActive: _selectedTabIndex == 2,
+                  isActive: _isActive(SelectedTab.educationCategory),
                   onPressed: () => setState(() {
-                    _selectedTabIndex = 2;
+                    _selectedTab = SelectedTab.educationCategory;
                   }),
                 ),
                 Space.w20,
