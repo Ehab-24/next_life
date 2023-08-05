@@ -19,10 +19,7 @@ class HomeLayout extends StatelessWidget {
             child: _Header(),
           ),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: child,
-            ),
+            child: child,
           ),
         ],
       ),
@@ -75,6 +72,9 @@ class _Header extends StatelessWidget {
                 (route) => route.isFirst,
               ),
               icon: Icon(Icons.home_outlined),
+              style: IconButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.secondary,
+              ),
             ),
           ],
         ),

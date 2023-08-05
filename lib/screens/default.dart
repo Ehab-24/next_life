@@ -30,6 +30,11 @@ class DefaultScreen extends StatelessWidget {
               text: "Home Screen",
               onPressed: () => pushScreen(context, '/home'),
             ),
+            Space.h20,
+            MElevatedButton(
+              text: "Personal Information",
+              onPressed: () => pushScreen(context, '/personal-information'),
+            ),
           ],
         ),
       ),
