@@ -52,20 +52,23 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: cats
-            .map(
-              (cat) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: MElevatedIconButton(
-                  text: cat.text,
-                  onPressed: () => pushScreen(context, cat.href),
-                  iconData: cat.iconData,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: cats
+              .map(
+                (cat) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: MElevatedIconButton(
+                    text: cat.text,
+                    onPressed: () => pushScreen(context, cat.href),
+                    iconData: cat.iconData,
+                  ),
                 ),
-              ),
-            )
-            .toList(),
+              )
+              .toList(),
+        ),
       ),
     );
   }

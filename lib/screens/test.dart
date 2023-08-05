@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:next_life/constants/spacing.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
 import 'package:next_life/widgets/buttons/inputs/text_fields.dart';
+import 'package:next_life/widgets/date_picker.dart';
 
 class TestPage extends StatelessWidget {
   const TestPage({super.key});
@@ -11,13 +12,16 @@ class TestPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        // crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text("This is a test screen feat all custom widgets"),
           Space.h40,
-          MElevatedButton(
-            text: "Elevated Button",
-            onPressed: () {},
+          FractionallySizedBox(
+            widthFactor: 1.0,
+            child: MElevatedButton(
+              text: "Elevated Button",
+              onPressed: () {},
+            ),
           ),
           Space.h20,
           Row(
@@ -68,7 +72,9 @@ class TestPage extends StatelessWidget {
           Space.h20,
           const MTextFormField(
             labelText: "Name",
-          )
+          ),
+          Space.h20,
+          DatePicker(text: "Date Picker")
         ],
       ),
     );

@@ -8,38 +8,45 @@ class HelpAndSupportPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Align(
-              alignment: Alignment.center,
-              child: Text("Help and Support", style: TextStyles.md),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text("Help and Support", style: TextStyles.md),
+                  ),
+                  Space.h20,
+                  MElevatedButton(
+                    text: "Privacy Policy",
+                    onPressed: () {},
+                  ),
+                  Space.h20,
+                  MElevatedButton(
+                    text: "Terms and conditions",
+                    onPressed: () {},
+                  ),
+                  Space.h20,
+                  MElevatedButton(
+                    text: "Discord",
+                    onPressed: () {},
+                  ),
+                  Space.h20,
+                  MElevatedButton(
+                    text: "Contact us",
+                    onPressed: () {},
+                  ),
+                ],
+              ),
             ),
-            Space.h20,
-            MElevatedButton(
-              text: "Privacy Policy",
-              onPressed: () {},
-            ),
-            Space.h20,
-            MElevatedButton(
-              text: "Terms and conditions",
-              onPressed: () {},
-            ),
-            Space.h20,
-            MElevatedButton(
-              text: "Discord",
-              onPressed: () {},
-            ),
-            Space.h20,
-            MElevatedButton(
-              text: "Contact us",
-              onPressed: () {},
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

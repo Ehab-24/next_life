@@ -17,70 +17,77 @@ class _ChangeAppearancePageState extends State<ChangeAppearancePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const Center(
-              child: Text(
-                "Appearance",
-                style: TextStyles.lg,
-              ),
-            ),
-            Space.h32,
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      ThemeModeContainer(isDark: false),
-                      Space.h8,
-                      Radio(
-                          value: Theme.light,
-                          groupValue: _theme,
-                          onChanged: (Theme? value) {
-                            setState(() {
-                              _theme = value;
-                            });
-                          }),
-                      Space.h8,
-                      const Text("Light Mode")
-                    ],
+                  const Center(
+                    child: Text(
+                      "Appearance",
+                      style: TextStyles.lg,
+                    ),
                   ),
-                  const Spacer(),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      ThemeModeContainer(isDark: true),
-                      Space.h8,
-                      Radio(
-                          value: Theme.dark,
-                          groupValue: _theme,
-                          onChanged: (Theme? value) {
-                            setState(() {
-                              _theme = value;
-                            });
-                          }),
-                      Space.h8,
-                      const Text("Dark Mode")
-                    ],
+                  Space.h32,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ThemeModeContainer(isDark: false),
+                            Space.h8,
+                            Radio(
+                                value: Theme.light,
+                                groupValue: _theme,
+                                onChanged: (Theme? value) {
+                                  setState(() {
+                                    _theme = value;
+                                  });
+                                }),
+                            Space.h8,
+                            const Text("Light Mode")
+                          ],
+                        ),
+                        const Spacer(),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ThemeModeContainer(isDark: true),
+                            Space.h8,
+                            Radio(
+                                value: Theme.dark,
+                                groupValue: _theme,
+                                onChanged: (Theme? value) {
+                                  setState(() {
+                                    _theme = value;
+                                  });
+                                }),
+                            Space.h8,
+                            const Text("Dark Mode")
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  Space.h32,
+                  MElevatedButton(
+                    text: "Save",
+                    onPressed: () {},
                   )
                 ],
               ),
             ),
-            Space.h32,
-            MElevatedButton(
-              text: "Save",
-              onPressed: () {},
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
