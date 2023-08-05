@@ -29,7 +29,6 @@ class MyLifeAddress extends StatelessWidget {
                       SizedBox(
                         height: 44,
                         child: TextField(
-                          keyboardType: TextInputType.number,
                           decoration: InputStyles.textInput(context, ""),
                         ),
                       ),
@@ -44,7 +43,6 @@ class MyLifeAddress extends StatelessWidget {
                       SizedBox(
                         height: 44,
                         child: TextField(
-                          keyboardType: TextInputType.number,
                           decoration: InputStyles.textInput(context, ""),
                         ),
                       ),
@@ -62,7 +60,6 @@ class MyLifeAddress extends StatelessWidget {
                             SizedBox(
                               height: 44,
                               child: TextField(
-                                keyboardType: TextInputType.number,
                                 decoration: InputStyles.textInput(context, ""),
                               ),
                             ),
@@ -79,7 +76,6 @@ class MyLifeAddress extends StatelessWidget {
                             SizedBox(
                               height: 44,
                               child: TextField(
-                                keyboardType: TextInputType.number,
                                 decoration: InputStyles.textInput(context, ""),
                               ),
                             ),

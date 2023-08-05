@@ -129,7 +129,6 @@ class _MyLifeState extends State<MyLife> {
               ),
             ),
           ),
-          Space.h20,
 
           // Tabs navigation
           SingleChildScrollView(
@@ -164,7 +163,6 @@ class _MyLifeState extends State<MyLife> {
               ],
             ),
           ),
-          Space.h20,
 
           // Currently selected tab
           _getActiveTab()

@@ -9,6 +9,7 @@ class InputStyles {
         fontSize: 14,
         fontWeight: FontWeight.w500,
       ),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 8),
       filled: true,
       fillColor: Theme.of(context).colorScheme.primary.withOpacity(0.08),
       border: OutlineInputBorder(
