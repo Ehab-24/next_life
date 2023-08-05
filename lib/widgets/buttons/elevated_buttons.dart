@@ -28,6 +28,36 @@ class MElevatedButton extends StatelessWidget {
   }
 }
 
+class MElevatedButtonMini extends StatelessWidget {
+  final String text;
+  final Color? backgroundColor;
+  final Color? textColor;
+  final void Function()? onPressed;
+
+  const MElevatedButtonMini({
+    required this.text,
+    required this.onPressed,
+    this.backgroundColor,
+    this.textColor,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FilledButton(
+      style: ButtonStyles.elevatedButtonMini(backgroundColor),
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: 14,
+          color: textColor,
+        ),
+      ),
+    );
+  }
+}
+
 class MElevatedIconButton extends StatelessWidget {
   final String text;
   final IconData iconData;

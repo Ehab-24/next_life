@@ -14,6 +14,19 @@ class ButtonStyles {
         ),
       );
 
+  static ButtonStyle elevatedButtonMini(Color? backgroundColor) =>
+      ElevatedButton.styleFrom(
+        minimumSize: const Size(72, 44),
+        backgroundColor: backgroundColor,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            width: 3,
+            color: Colors.teal.shade300.withOpacity(0.5),
+          ),
+          borderRadius: BorderRadius.circular(10),
+        ),
+      );
+
   static final elevatedButtonLarge = ElevatedButton.styleFrom(
     minimumSize: const Size(172, 64),
     shape: RoundedRectangleBorder(
