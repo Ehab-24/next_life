@@ -30,6 +30,12 @@ class AccountPage extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.black.withOpacity(0.25),
                     borderRadius: BorderRadius.circular(60),
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        'https://loremflickr.com/640/480/nature',
+                      ),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 Space.h32,

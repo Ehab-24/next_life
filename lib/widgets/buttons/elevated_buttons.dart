@@ -82,11 +82,9 @@ class MElevatedIconButtonLarge extends StatelessWidget {
       onPressed: onPressed,
       style: ButtonStyles.elevatedButtonLarge,
       icon: Icon(iconData),
-      label: Flexible(
-        child: Text(
-          text,
-          style: TextStyles.sm,
-        ),
+      label: Text(
+        text,
+        style: TextStyles.sm,
       ),
     );
   }

@@ -17,6 +17,11 @@ class MyApp extends StatelessWidget {
           seedColor: Color.fromRGBO(41, 137, 119, 1),
           secondary: Color.fromRGBO(126, 190, 178, 1),
           onPrimary: Colors.white,
+          background: Color.fromARGB(255, 229, 240, 238),
+        ),
+        cardTheme: CardTheme(
+          color: Colors.white,
+          surfaceTintColor: Colors.white,
         ),
         useMaterial3: true,
       ),

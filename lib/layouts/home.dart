@@ -11,21 +11,20 @@ class HomeLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            Container(
-              color: Theme.of(context).colorScheme.primary.withOpacity(0.8),
-              padding: const EdgeInsets.all(20),
-              child: _Header(),
-            ),
-            Padding(
+      body: Column(
+        children: [
+          Container(
+            color: Theme.of(context).colorScheme.primary.withOpacity(0.8),
+            padding: const EdgeInsets.all(20),
+            child: _Header(),
+          ),
+          Expanded(
+            child: Padding(
               padding: const EdgeInsets.all(16),
               child: child,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
