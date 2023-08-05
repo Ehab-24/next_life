@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:next_life/constants/spacing.dart';
 import 'package:next_life/screens/error.dart';
 import 'package:next_life/screens/my-life/components/living-situation/page.dart';
+import 'package:next_life/screens/my-life/components/living-situation/sub-pages/address.dart';
+import 'package:next_life/screens/my-life/components/living-situation/sub-pages/dependants.dart';
+import 'package:next_life/screens/my-life/components/living-situation/sub-pages/hobbies.dart';
 import 'package:next_life/screens/my-life/components/living-situation/sub-pages/housing.dart';
+import 'package:next_life/screens/my-life/components/living-situation/sub-pages/internet_speed.dart';
+import 'package:next_life/screens/my-life/components/living-situation/sub-pages/pets.dart';
+import 'package:next_life/screens/my-life/components/living-situation/sub-pages/sleep_schedule.dart';
+import 'package:next_life/screens/my-life/components/living-situation/sub-pages/transportation.dart';
 import 'package:next_life/styles/text.dart';
 import 'package:next_life/widgets/texts.dart';
 
@@ -18,8 +25,18 @@ class MyLife extends StatefulWidget {
 
 class SelectedTab {
   static const personalInformation = 'personal-information';
+
   static const livingSituation = 'living-situation';
   static const livingSituationHousing = 'living-situation/housing';
+  static const livingSituationTransportation =
+      'living-situation/transportation';
+  static const livingSituationDependents = 'living-situation/dependents';
+  static const livingSituationAddress = 'living-situation/address';
+  static const livingSituationPets = 'living-situation/pets';
+  static const livingSituationInternetSpeed = 'living-situation/internet-speed';
+  static const livingSituationHobbies = 'living-situation/hobbies';
+  static const livingSituationSleepSchedule = 'living-situation/sleep-schedule';
+
   static const educationCategory = 'education-category';
 }
 
@@ -62,6 +79,20 @@ class _MyLifeState extends State<MyLife> {
         return LivingSituation(setTab: setSelectedTab);
       case SelectedTab.livingSituationHousing:
         return MyLifeHousing();
+      case SelectedTab.livingSituationTransportation:
+        return MyLifeTransportation();
+      case SelectedTab.livingSituationDependents:
+        return MyLifeDependants();
+      case SelectedTab.livingSituationAddress:
+        return MyLifeAddress();
+      case SelectedTab.livingSituationPets:
+        return MyLifePets();
+      case SelectedTab.livingSituationInternetSpeed:
+        return MyLifeInternetSpeed();
+      case SelectedTab.livingSituationHobbies:
+        return MyLifeHobbies();
+      case SelectedTab.livingSituationSleepSchedule:
+        return MyLifeSleepSchedule();
       case SelectedTab.educationCategory:
         return PersonalInformationTab(
           username: username,

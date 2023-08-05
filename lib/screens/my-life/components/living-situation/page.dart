@@ -24,27 +24,37 @@ class LivingSituation extends StatelessWidget {
               onPressed1: () => setTab(SelectedTab.livingSituationHousing),
               title2: "transportation",
               text2: "Edit Transportation",
+              onPressed2: () =>
+                  setTab(SelectedTab.livingSituationTransportation),
             ),
             Divider(height: 40),
             DoubleText(
               title1: "Dependents",
               text1: "Edit dependents",
+              onPressed1: () => setTab(SelectedTab.livingSituationDependents),
               title2: "Address",
               text2: "Edit address",
+              onPressed2: () => setTab(SelectedTab.livingSituationAddress),
             ),
             Divider(height: 40),
             DoubleText(
               title1: "Pets",
               text1: "Edit pets",
+              onPressed1: () => setTab(SelectedTab.livingSituationPets),
               title2: "Internet Speed",
               text2: "Edit internet speed",
+              onPressed2: () =>
+                  setTab(SelectedTab.livingSituationInternetSpeed),
             ),
             Divider(height: 40),
             DoubleText(
               title1: "Hobbies",
               text1: "Edit hobbies",
+              onPressed1: () => setTab(SelectedTab.livingSituationHobbies),
               title2: "Sleep Schedule",
               text2: "Edit sleep schedule",
+              onPressed2: () =>
+                  setTab(SelectedTab.livingSituationSleepSchedule),
             ),
             Divider(height: 40),
             SizedBox(
