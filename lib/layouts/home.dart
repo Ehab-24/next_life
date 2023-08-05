@@ -86,7 +86,7 @@ class _Header extends StatelessWidget {
             Expanded(
               child: MElevatedIconButton(
                 text: "Path Finder",
-                onPressed: () {},
+                onPressed: () => pushScreen(context, '/pathfinder-report'),
                 backgroundColor: Theme.of(context).colorScheme.secondary,
                 iconData: Icons.manage_search_outlined,
               ),
