@@ -3,9 +3,20 @@ import 'package:next_life/constants/spacing.dart';
 import 'package:next_life/styles/text.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
 import 'package:next_life/widgets/buttons/inputs/text_fields.dart';
+import 'package:next_life/widgets/time_picker.dart';
 
-class MyLifeSleepSchedule extends StatelessWidget {
+import '../../../../../styles/inputs.dart';
+
+class MyLifeSleepSchedule extends StatefulWidget {
   const MyLifeSleepSchedule({super.key});
+
+  @override
+  State<MyLifeSleepSchedule> createState() => _MyLifeSleepScheduleState();
+}
+
+class _MyLifeSleepScheduleState extends State<MyLifeSleepSchedule> {
+  TimeOfDay sleepTime = TimeOfDay.now();
+  TimeOfDay wakeupTime = TimeOfDay.now();
 
   @override
   Widget build(BuildContext context) {
@@ -18,29 +29,54 @@ class MyLifeSleepSchedule extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
               child: Column(
                 children: [
-                  Text("Sleep Schedule", style: TextStyles.md),
+                  Text("Pets", style: TextStyles.md),
                   Space.h20,
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Expanded(child: MTextFormField(labelText: "Housing")),
-                      Space.w8,
                       Expanded(
-                          child: MTextFormField(labelText: "Type of housing")),
-                      Space.w8,
-                      // Delete button
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.delete_forever_outlined,
-                          color: Colors.red.withOpacity(0.6),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Text("Sleep time"),
+                            Space.h2,
+                            SizedBox(
+                              height: 44,
+                              child: MTimePicker(
+                                time: sleepTime,
+                                onChange: (time) => setState(() {
+                                  sleepTime = time ?? TimeOfDay.now();
+                                }),
+                              ),
+                            ),
+                          ],
                         ),
-                      )
+                      ),
+                      Space.w20,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Text("Wake up time"),
+                            Space.h2,
+                            SizedBox(
+                              height: 44,
+                              child: MTimePicker(
+                                time: wakeupTime,
+                                onChange: (TimeOfDay? time) => setState(() {
+                                  wakeupTime = time ?? TimeOfDay.now();
+                                }),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                   Divider(height: 40),
                   TextButton(
                     onPressed: () {},
-                    child: Text("Add extra housing information"),
+                    child: Text("Add additional pet"),
                   ),
                   Divider(height: 40),
                   SizedBox(
