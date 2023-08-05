@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:next_life/constants/spacing.dart';
+import 'package:next_life/styles/inputs.dart';
 import 'package:next_life/styles/text.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
-import 'package:next_life/widgets/buttons/inputs/text_fields.dart';
 
 class MyLifeDependants extends StatelessWidget {
-  const MyLifeDependants({super.key});
+  MyLifeDependants({super.key});
 
+  void _save() {
+    // implement save logic
+    print(numDependants.text);
+  }
+
+  var numDependants = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,32 +27,26 @@ class MyLifeDependants extends StatelessWidget {
                 children: [
                   Text("Dependants", style: TextStyles.md),
                   Space.h20,
-                  Row(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(child: MTextFormField(labelText: "Housing")),
-                      Space.w8,
-                      Expanded(
-                          child: MTextFormField(labelText: "Type of housing")),
-                      Space.w8,
-                      // Delete button
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.delete_forever_outlined,
-                          color: Colors.red.withOpacity(0.6),
-                        ),
-                      )
+                      Text("Select number of dependants"),
+                      Space.h2,
+                      TextField(
+                        onSubmitted: (_) => _save(),
+                        controller: numDependants,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
+                        decoration: InputStyles.textInput(context, ""),
+                      ),
                     ],
                   ),
-                  Divider(height: 40),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text("Add extra housing information"),
-                  ),
-                  Divider(height: 40),
+                  Space.h20,
                   SizedBox(
                     width: 172,
-                    child: MElevatedButton(text: "Save", onPressed: () {}),
+                    child: MElevatedButton(text: "Save", onPressed: _save),
                   )
                 ],
               ),

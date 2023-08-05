@@ -15,20 +15,7 @@ class MTextFormField extends StatelessWidget {
     return SizedBox(
       height: 52,
       child: TextFormField(
-        // decoration: InputStyles.textInput(labelText),
-        decoration: InputDecoration(
-          labelText: labelText,
-          labelStyle: TextStyle(
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.8),
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-          filled: true,
-          fillColor: Theme.of(context).colorScheme.primary.withOpacity(0.08),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
+        decoration: InputStyles.textInput(context, labelText),
       ),
     );
   }
