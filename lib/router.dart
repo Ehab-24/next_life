@@ -9,7 +9,7 @@ import 'package:next_life/screens/gender.dart';
 import 'package:next_life/screens/help_and_support.dart';
 import 'package:next_life/screens/home.dart';
 import 'package:next_life/screens/pathfinder_report.dart';
-import 'package:next_life/screens/personal_information.dart';
+import 'package:next_life/screens/personal_information/page.dart';
 import 'package:next_life/screens/settings.dart';
 import 'package:next_life/screens/test.dart';
 import 'package:next_life/screens/username.dart';
@@ -47,7 +47,7 @@ class RouteGenerator {
       case "/pathfinder-report":
         return _generateRoute(PathFinderReport());
       case "/personal-information":
-        return _generateRoute(const PersonalInformation());
+        return _generateRoute(PersonalInformation());
       default:
         return _generateRoute(const ErrorPage(message: "404 Not Found"));
     }

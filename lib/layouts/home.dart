@@ -91,7 +91,7 @@ class _Header extends StatelessWidget {
                 iconData: Icons.manage_search_outlined,
               ),
             ),
-            Space.w32,
+            Space.w8,
             Expanded(
               child: MElevatedIconButton(
                 text: "Store",
