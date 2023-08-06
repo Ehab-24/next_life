@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:next_life/constants/spacing.dart';
 import 'package:next_life/styles/text.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
-import 'package:next_life/widgets/buttons/inputs/text_fields.dart';
+import 'package:next_life/widgets/inputs/text_form_field.dart';
 import 'package:next_life/widgets/time_picker.dart';
 
 import '../../../../../styles/inputs.dart';
@@ -29,7 +29,7 @@ class _MyLifeSleepScheduleState extends State<MyLifeSleepSchedule> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
               child: Column(
                 children: [
-                  Text("Pets", style: TextStyles.md),
+                  Text("Sleep Schedule", style: TextStyles.md),
                   Space.h20,
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -38,7 +38,7 @@ class _MyLifeSleepScheduleState extends State<MyLifeSleepSchedule> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            Text("Sleep time"),
+                            Text("Sleep time", style: TextStyles.xs),
                             Space.h2,
                             SizedBox(
                               height: 44,
@@ -57,7 +57,7 @@ class _MyLifeSleepScheduleState extends State<MyLifeSleepSchedule> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            Text("Wake up time"),
+                            Text("Wake up time", style: TextStyles.xs),
                             Space.h2,
                             SizedBox(
                               height: 44,
@@ -73,12 +73,7 @@ class _MyLifeSleepScheduleState extends State<MyLifeSleepSchedule> {
                       ),
                     ],
                   ),
-                  Divider(height: 40),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text("Add additional pet"),
-                  ),
-                  Divider(height: 40),
+                  Space.h20,
                   SizedBox(
                     width: 172,
                     child: MElevatedButton(text: "Save", onPressed: () {}),

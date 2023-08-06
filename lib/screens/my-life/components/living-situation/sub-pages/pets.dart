@@ -5,6 +5,7 @@ import 'package:next_life/styles/text.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
 
 import '../../../../../styles/inputs.dart';
+import '../../../../../widgets/inputs/text_field.dart';
 
 class MyLifePets extends StatelessWidget {
   const MyLifePets({super.key});
@@ -26,39 +27,11 @@ class MyLifePets extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Pet type"),
-                            Space.h2,
-                            SizedBox(
-                              height: 44,
-                              child: TextField(
-                                decoration: InputStyles.textInput(context, ""),
-                              ),
-                            ),
-                          ],
-                        ),
+                        child: MTextField(labelText: "Pet type"),
                       ),
                       Space.w20,
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Number of pets"),
-                            Space.h2,
-                            SizedBox(
-                              height: 44,
-                              child: TextField(
-                                keyboardType: TextInputType.number,
-                                inputFormatters: <TextInputFormatter>[
-                                  FilteringTextInputFormatter.digitsOnly
-                                ],
-                                decoration: InputStyles.textInput(context, ""),
-                              ),
-                            ),
-                          ],
-                        ),
+                        child: MTextField(labelText: "Number of pets"),
                       ),
                       Space.w8,
                       // Delete button

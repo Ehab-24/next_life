@@ -62,6 +62,7 @@ class HomePage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   child: MElevatedIconButton(
                     text: cat.text,
+                    alignment: MainAxisAlignment.start,
                     onPressed: () => pushScreen(context, cat.href),
                     iconData: cat.iconData,
                   ),

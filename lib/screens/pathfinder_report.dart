@@ -1,7 +1,9 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:next_life/constants/spacing.dart';
+import 'package:next_life/providers/theme.dart';
 import 'package:next_life/styles/text.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/buttons/elevated_buttons.dart';
 
@@ -34,69 +36,83 @@ class PathFinderReport extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(vertical: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           // Section 1 - Your top career
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.yellow.withOpacity(0.3),
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: Colors.yellow.shade700.withOpacity(0.5),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Card(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            color: Colors.yellow.shade200,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: Colors.yellow.shade700,
+                            ),
+                          ),
+                          child: Text(
+                            "#1",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.brown.shade300,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
-                        child: Text(
-                          "#1",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.brown.shade300,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                      Text("Your top career", style: TextStyles.md),
-                      SizedBox.shrink(),
-                    ],
-                  ),
-                  Space.h20,
-                  FractionallySizedBox(
-                    widthFactor: 1.0,
-                    child: _CareerExpandableButton(userCareer: userCareer),
-                  )
-                ],
+                        Text("Your top career", style: TextStyles.md),
+                        SizedBox.shrink(),
+                      ],
+                    ),
+                    Space.h20,
+                    FractionallySizedBox(
+                      widthFactor: 1.0,
+                      child: _CareerExpandableButton(userCareer: userCareer),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
 
           Space.h32,
 
-          Wrap(
-            children: careerSuggestions
-                .map((c) => FractionallySizedBox(
-                      key: Key(c.title),
-                      widthFactor: 0.5,
-                      child: _CareerCard(career: c),
-                    ))
-                .toList(),
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Wrap(
+              runSpacing: 16,
+              children: careerSuggestions
+                  .map((c) => FractionallySizedBox(
+                        key: Key(c.title),
+                        widthFactor: 0.5,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 16),
+                          child: _CareerCard(career: c),
+                        ),
+                      ))
+                  .toList(),
+            ),
           ),
 
           Space.h48,
-          FractionallySizedBox(
-            widthFactor: 1.0,
-            child: MElevatedButton(
-              text: "Find Another Path",
-              onPressed: _findAnotherPath,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: FractionallySizedBox(
+              widthFactor: 1.0,
+              child: MElevatedButton(
+                text: "Find Another Path",
+                onPressed: _findAnotherPath,
+              ),
             ),
           ),
         ],
@@ -115,6 +131,8 @@ class _CareerExpandableButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLight = Provider.of<ThemeProvider>(context).isLight;
+
     return ExpandablePanel(
       theme: ExpandableThemeData(
         tapHeaderToExpand: true,
@@ -131,7 +149,7 @@ class _CareerExpandableButton extends StatelessWidget {
           userCareer,
           style: TextStyle(
             fontSize: 20,
-            color: Theme.of(context).colorScheme.primary,
+            color: Theme.of(context).colorScheme.secondary,
           ),
         ),
       ),
@@ -190,12 +208,12 @@ class _CareerCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
-                color: Colors.yellow.withOpacity(0.3),
+                color: Colors.yellow.shade200,
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                  color: Colors.yellow.shade700.withOpacity(0.5),
+                  color: Colors.yellow.shade700,
                 ),
               ),
               child: Text(
@@ -207,7 +225,7 @@ class _CareerCard extends StatelessWidget {
                 ),
               ),
             ),
-            Text(career.title, style: TextStyles.md),
+            Text(career.title, style: TextStyles.sm),
             SizedBox.shrink(),
           ],
         ),

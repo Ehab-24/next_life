@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:next_life/constants/spacing.dart';
 import 'package:next_life/styles/text.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
-
-import '../../../../../styles/inputs.dart';
+import 'package:next_life/widgets/inputs/text_field.dart';
 
 class MyLifeHobbies extends StatelessWidget {
   const MyLifeHobbies({super.key});
@@ -26,40 +24,9 @@ class MyLifeHobbies extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Hobby description"),
-                            Space.h2,
-                            SizedBox(
-                              height: 44,
-                              child: TextField(
-                                decoration: InputStyles.textInput(context, ""),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                          child: MTextField(labelText: "Hobby description")),
                       Space.w20,
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Hours / week"),
-                            Space.h2,
-                            SizedBox(
-                              height: 44,
-                              child: TextField(
-                                keyboardType: TextInputType.number,
-                                inputFormatters: <TextInputFormatter>[
-                                  FilteringTextInputFormatter.digitsOnly
-                                ],
-                                decoration: InputStyles.textInput(context, ""),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      Expanded(child: MTextField(labelText: "Hours / week")),
                       Space.w8,
                       // Delete button
                       IconButton(

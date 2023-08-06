@@ -3,7 +3,7 @@ import 'package:next_life/constants/spacing.dart';
 import 'package:next_life/styles/text.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
 import 'package:next_life/widgets/date_picker.dart';
-import 'package:next_life/widgets/texts.dart';
+import 'package:next_life/widgets/highlighted_text.dart';
 
 class DOBPage extends StatelessWidget {
   const DOBPage({super.key});

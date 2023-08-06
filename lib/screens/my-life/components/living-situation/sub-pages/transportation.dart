@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:next_life/constants/spacing.dart';
 import 'package:next_life/styles/text.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
-import 'package:next_life/widgets/buttons/inputs/text_fields.dart';
+import 'package:next_life/widgets/inputs/text_form_field.dart';
+
+import '../../../../../widgets/inputs/text_field.dart';
 
 class MyLifeTransportation extends StatelessWidget {
   const MyLifeTransportation({super.key});
@@ -22,10 +24,9 @@ class MyLifeTransportation extends StatelessWidget {
                   Space.h20,
                   Row(
                     children: [
-                      Expanded(child: MTextFormField(labelText: "Housing")),
+                      Expanded(child: MTextField(labelText: "Housing")),
                       Space.w8,
-                      Expanded(
-                          child: MTextFormField(labelText: "Type of housing")),
+                      Expanded(child: MTextField(labelText: "Type of housing")),
                       Space.w8,
                       // Delete button
                       IconButton(

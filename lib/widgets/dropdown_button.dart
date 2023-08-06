@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:next_life/styles/text.dart';
 
 class MDropdownButton extends StatefulWidget {
   const MDropdownButton({
@@ -6,10 +7,12 @@ class MDropdownButton extends StatefulWidget {
     required this.options,
     required this.onChange,
     required this.value,
+    this.isLight,
   });
 
   final List<String> options;
   final String value;
+  final bool? isLight;
   final void Function(String?) onChange;
 
   @override
@@ -19,28 +22,37 @@ class MDropdownButton extends StatefulWidget {
 class _MDropdownButtonState extends State<MDropdownButton> {
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: widget.value.isNotEmpty ? widget.value : null,
-      alignment: Alignment.bottomRight,
-      isExpanded: true,
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      focusColor: Colors.black.withOpacity(0.08),
-      icon: Icon(
-        Icons.keyboard_arrow_down_outlined,
-        color: Theme.of(context).colorScheme.primary,
+    return Container(
+      constraints: BoxConstraints(maxHeight: 39),
+      decoration: BoxDecoration(
+        color: widget.isLight ?? false
+            ? Theme.of(context).colorScheme.secondary
+            : Theme.of(context).colorScheme.background,
+        borderRadius: BorderRadius.circular(10),
       ),
-      style: TextStyle(
-        color: Theme.of(context).colorScheme.primary,
+      child: DropdownButton<String>(
+        value: widget.value.isNotEmpty ? widget.value : null,
+        alignment: Alignment.bottomRight,
+        isExpanded: true,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        focusColor: Colors.black.withOpacity(0.08),
+        icon: Icon(
+          Icons.keyboard_arrow_down_outlined,
+          color: Colors.white,
+        ),
+        dropdownColor: widget.isLight ?? false
+            ? Theme.of(context).colorScheme.secondary
+            : Theme.of(context).colorScheme.background,
+        style: TextStyles.sm,
+        underline: SizedBox.shrink(),
+        onChanged: widget.onChange,
+        items: widget.options.map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(value),
+          );
+        }).toList(),
       ),
-      underline: SizedBox.shrink(),
-      borderRadius: BorderRadius.circular(10),
-      onChanged: widget.onChange,
-      items: widget.options.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
     );
   }
 }

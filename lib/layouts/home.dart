@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:next_life/constants/spacing.dart';
 import 'package:next_life/utils.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
+import 'package:next_life/widgets/dropdown_button.dart';
 
 class HomeLayout extends StatelessWidget {
   final Widget child;
@@ -27,13 +28,24 @@ class HomeLayout extends StatelessWidget {
   }
 }
 
-class _Header extends StatelessWidget {
-  const _Header({
+class _Header extends StatefulWidget {
+  _Header({
     super.key,
   });
 
+  @override
+  State<_Header> createState() => _HeaderState();
+}
+
+class _HeaderState extends State<_Header> {
   final String username =
       "Rohan"; // actual username should be fetched from database
+
+  String _selectedOption = "Profile Select";
+  final List<String> options = [
+    "Profile Select",
+    "Something else?",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +59,8 @@ class _Header extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  width: 60,
-                  height: 60,
+                  width: 48,
+                  height: 48,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(40),
                     image: DecorationImage(
@@ -59,7 +71,7 @@ class _Header extends StatelessWidget {
                     ),
                   ),
                 ),
-                Space.w8,
+                Space.w20,
                 Text(
                   username,
                   style: TextStyle(fontSize: 18, color: Colors.white),
@@ -67,14 +79,13 @@ class _Header extends StatelessWidget {
                 )
               ],
             ),
-            IconButton.filled(
+            MElevatedIconButton(
+              text: "Home",
               onPressed: () => Navigator.of(context).popUntil(
                 (route) => route.isFirst,
               ),
-              icon: Icon(Icons.home_outlined),
-              style: IconButton.styleFrom(
-                backgroundColor: Theme.of(context).colorScheme.secondary,
-              ),
+              backgroundColor: Theme.of(context).colorScheme.secondary,
+              iconData: Icons.home_outlined,
             ),
           ],
         ),
@@ -86,6 +97,7 @@ class _Header extends StatelessWidget {
             Expanded(
               child: MElevatedIconButton(
                 text: "Path Finder",
+                alignment: MainAxisAlignment.start,
                 onPressed: () => pushScreen(context, '/pathfinder-report'),
                 backgroundColor: Theme.of(context).colorScheme.secondary,
                 iconData: Icons.manage_search_outlined,
@@ -95,6 +107,7 @@ class _Header extends StatelessWidget {
             Expanded(
               child: MElevatedIconButton(
                 text: "Store",
+                alignment: MainAxisAlignment.start,
                 onPressed: () {},
                 backgroundColor: Theme.of(context).colorScheme.secondary,
                 iconData: Icons.store_outlined,
@@ -103,12 +116,14 @@ class _Header extends StatelessWidget {
           ],
         ),
         Space.h20,
-        // TODO: change to dropdown button
-        MElevatedButton(
-          text: "Profile Select",
-          onPressed: () {},
-          backgroundColor: Theme.of(context).colorScheme.secondary,
-        )
+        MDropdownButton(
+          isLight: true,
+          options: options,
+          onChange: (String? value) => setState(() {
+            _selectedOption = value ?? options[0];
+          }),
+          value: _selectedOption,
+        ),
       ],
     );
   }

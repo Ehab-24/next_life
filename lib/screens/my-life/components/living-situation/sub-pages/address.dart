@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:next_life/constants/spacing.dart';
 import 'package:next_life/styles/text.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
+import 'package:next_life/widgets/inputs/text_field.dart';
 
 import '../../../../../styles/inputs.dart';
 
@@ -21,66 +22,18 @@ class MyLifeAddress extends StatelessWidget {
                 children: [
                   Text("Address", style: TextStyles.md),
                   Space.h20,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Street address"),
-                      Space.h2,
-                      SizedBox(
-                        height: 44,
-                        child: TextField(
-                          decoration: InputStyles.textInput(context, ""),
-                        ),
-                      ),
-                    ],
-                  ),
+                  MTextField(labelText: "Street address"),
                   Space.h20,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("ZIP code"),
-                      Space.h2,
-                      SizedBox(
-                        height: 44,
-                        child: TextField(
-                          decoration: InputStyles.textInput(context, ""),
-                        ),
-                      ),
-                    ],
-                  ),
+                  MTextField(labelText: "ZIP Code"),
                   Space.h20,
                   Row(
                     children: [
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("City"),
-                            Space.h2,
-                            SizedBox(
-                              height: 44,
-                              child: TextField(
-                                decoration: InputStyles.textInput(context, ""),
-                              ),
-                            ),
-                          ],
-                        ),
+                        child: MTextField(labelText: "City"),
                       ),
                       Space.w20,
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("State"),
-                            Space.h2,
-                            SizedBox(
-                              height: 44,
-                              child: TextField(
-                                decoration: InputStyles.textInput(context, ""),
-                              ),
-                            ),
-                          ],
-                        ),
+                        child: MTextField(labelText: "State"),
                       ),
                     ],
                   ),

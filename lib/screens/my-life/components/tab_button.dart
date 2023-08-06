@@ -25,6 +25,8 @@ class TabButton extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
           color:
               isActive ? Colors.white : Theme.of(context).colorScheme.primary,
         ),

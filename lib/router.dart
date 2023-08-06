@@ -56,8 +56,10 @@ class RouteGenerator {
 
   static Route<Widget> _generateRoute(Widget screen, {useHomeLayout = true}) {
     if (useHomeLayout) {
-      return MaterialPageRoute(builder: (_) => HomeLayout(child: screen));
+      screen = HomeLayout(child: screen);
     }
-    return MaterialPageRoute(builder: (_) => screen);
+    return MaterialPageRoute(
+      builder: (_) => SafeArea(child: screen),
+    );
   }
 }

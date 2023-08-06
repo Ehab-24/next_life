@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../styles/inputs.dart';
+import '../../styles/inputs.dart';
 
 class MTextFormField extends StatelessWidget {
   final String labelText;
@@ -13,7 +13,7 @@ class MTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 44,
+      height: 42,
       child: TextFormField(
         decoration: InputStyles.textInput(context, labelText),
       ),

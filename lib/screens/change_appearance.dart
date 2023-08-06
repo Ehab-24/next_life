@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:next_life/constants/spacing.dart';
+import 'package:next_life/providers/theme.dart';
 import 'package:next_life/styles/text.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
-
-enum Theme { light, dark }
+import 'package:provider/provider.dart';
 
 class ChangeAppearancePage extends StatefulWidget {
   const ChangeAppearancePage({super.key});
@@ -13,7 +13,7 @@ class ChangeAppearancePage extends StatefulWidget {
 }
 
 class _ChangeAppearancePageState extends State<ChangeAppearancePage> {
-  Theme? _theme = Theme.light;
+  ThemeMode _theme = ThemeMode.light;
 
   @override
   Widget build(BuildContext context) {
@@ -43,14 +43,14 @@ class _ChangeAppearancePageState extends State<ChangeAppearancePage> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            ThemeModeContainer(isDark: false),
+                            _ThemeModeContainer(isDark: false),
                             Space.h8,
                             Radio(
-                                value: Theme.light,
+                                value: ThemeMode.light,
                                 groupValue: _theme,
-                                onChanged: (Theme? value) {
+                                onChanged: (ThemeMode? value) {
                                   setState(() {
-                                    _theme = value;
+                                    _theme = value ?? ThemeMode.light;
                                   });
                                 }),
                             Space.h8,
@@ -61,14 +61,14 @@ class _ChangeAppearancePageState extends State<ChangeAppearancePage> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            ThemeModeContainer(isDark: true),
+                            _ThemeModeContainer(isDark: true),
                             Space.h8,
                             Radio(
-                                value: Theme.dark,
+                                value: ThemeMode.dark,
                                 groupValue: _theme,
-                                onChanged: (Theme? value) {
+                                onChanged: (ThemeMode? value) {
                                   setState(() {
-                                    _theme = value;
+                                    _theme = value ?? ThemeMode.light;
                                   });
                                 }),
                             Space.h8,
@@ -81,7 +81,10 @@ class _ChangeAppearancePageState extends State<ChangeAppearancePage> {
                   Space.h32,
                   MElevatedButton(
                     text: "Save",
-                    onPressed: () {},
+                    onPressed: () {
+                      Provider.of<ThemeProvider>(context, listen: false)
+                          .setTheme(_theme);
+                    },
                   )
                 ],
               ),
@@ -93,60 +96,49 @@ class _ChangeAppearancePageState extends State<ChangeAppearancePage> {
   }
 }
 
-class ThemeModeContainer extends StatelessWidget {
+class _ThemeModeContainer extends StatelessWidget {
   final bool isDark;
-  Color backgroundColor = Colors.white;
-  Color foregroundColor = Colors.purple.shade800.withOpacity(0.4);
-  Color borderColor = Colors.purple;
 
-  ThemeModeContainer({
+  _ThemeModeContainer({
     required this.isDark,
     super.key,
-  }) {
-    if (isDark) {
-      backgroundColor = Colors.grey.shade900;
-      foregroundColor = Colors.purple.shade300.withOpacity(0.8);
-      borderColor = Colors.purple.shade300;
-    }
-  }
+  });
 
   @override
   Widget build(BuildContext context) {
+    final Color foregroundColor = Theme.of(context).colorScheme.secondary;
+    final Color backgroundColor = isDark
+        ? const Color.fromRGBO(44, 44, 44, 1)
+        : Color.fromARGB(255, 229, 240, 238);
+    final Color textColor = isDark ? Colors.white24 : Colors.black54;
+
     return Container(
       width: 120,
       height: 160,
       decoration: BoxDecoration(
         color: backgroundColor,
-        border: Border.all(color: borderColor),
         borderRadius: BorderRadius.circular(10),
+        border:
+            isDark ? null : Border.all(color: Theme.of(context).primaryColor),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 8,
-          vertical: 12,
-        ),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FractionallySizedBox(
               widthFactor: 1.0,
               child: Container(
-                height: 14,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: foregroundColor,
-                ),
+                height: 11,
+                color: textColor,
               ),
             ),
             Space.h8,
             FractionallySizedBox(
               widthFactor: 0.8,
               child: Container(
-                height: 14,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: foregroundColor,
-                ),
+                height: 11,
+                color: textColor,
               ),
             ),
             const Spacer(),
@@ -155,9 +147,9 @@ class ThemeModeContainer extends StatelessWidget {
               child: Container(
                 height: 24,
                 decoration: BoxDecoration(
-                  border: Border.all(color: borderColor),
+                  border: Border.all(color: foregroundColor),
                   borderRadius: BorderRadius.circular(4),
-                  color: isDark ? Colors.white : Colors.grey.shade800,
+                  color: isDark ? Colors.grey.shade900 : Colors.white,
                 ),
               ),
             ),

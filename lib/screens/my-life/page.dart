@@ -11,7 +11,7 @@ import 'package:next_life/screens/my-life/components/living-situation/sub-pages/
 import 'package:next_life/screens/my-life/components/living-situation/sub-pages/sleep_schedule.dart';
 import 'package:next_life/screens/my-life/components/living-situation/sub-pages/transportation.dart';
 import 'package:next_life/styles/text.dart';
-import 'package:next_life/widgets/texts.dart';
+import 'package:next_life/widgets/highlighted_text.dart';
 
 import 'components/tab_button.dart';
 import 'components/tabs/personal_information.dart';
@@ -61,8 +61,6 @@ class _MyLifeState extends State<MyLife> {
 
   // Check which tab button is currently active
   bool _isActive(String pathname) {
-    print(_selectedTab);
-    print(pathname);
     return _selectedTab.contains(pathname);
   }
 
@@ -94,12 +92,7 @@ class _MyLifeState extends State<MyLife> {
       case SelectedTab.livingSituationSleepSchedule:
         return MyLifeSleepSchedule();
       case SelectedTab.educationCategory:
-        return PersonalInformationTab(
-          username: username,
-          userAge: userAge,
-          userEmail: userEmail,
-          userGender: userGender,
-        );
+        return Placeholder();
       default:
         return ErrorPage(message: "Unexpected tab index: $_selectedTab");
     }

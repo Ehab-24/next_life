@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:next_life/constants/spacing.dart';
 import 'package:next_life/styles/text.dart';
 import 'package:next_life/widgets/buttons/elevated_buttons.dart';
-import 'package:next_life/widgets/buttons/inputs/text_fields.dart';
+import 'package:next_life/widgets/inputs/text_form_field.dart';
 import 'package:next_life/widgets/dropdown_button.dart';
 
 class MyLifeInternetSpeed extends StatefulWidget {

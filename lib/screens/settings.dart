@@ -33,7 +33,7 @@ class SettingsPage extends StatelessWidget {
           ),
           Space.h32,
           FractionallySizedBox(
-            widthFactor: 0.6,
+            widthFactor: 0.8,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -42,19 +42,19 @@ class SettingsPage extends StatelessWidget {
                   iconData: Icons.mark_email_read,
                   onPressed: () {},
                 ),
-                Space.h20,
+                Space.h2,
                 AuthProviderButton(
                   text: "Sign-in with Apple",
                   iconData: Icons.apple,
                   onPressed: () {},
                 ),
-                Space.h20,
+                Space.h2,
                 AuthProviderButton(
                   text: "Sign-in with Facebook",
                   iconData: Icons.face,
                   onPressed: () {},
                 ),
-                Space.h20,
+                Space.h2,
                 AuthProviderButton(
                   text: "Sign-in with Amazon",
                   iconData: Icons.amp_stories_sharp,

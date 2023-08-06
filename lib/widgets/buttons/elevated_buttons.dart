@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:next_life/providers/theme.dart';
+import 'package:provider/provider.dart';
 
 import '../../styles/buttons.dart';
 import '../../styles/text.dart';
@@ -63,12 +65,14 @@ class MElevatedIconButton extends StatelessWidget {
   final IconData iconData;
   final Color? backgroundColor;
   final void Function()? onPressed;
+  final MainAxisAlignment? alignment;
 
   const MElevatedIconButton({
     required this.text,
     required this.onPressed,
     required this.iconData,
     this.backgroundColor,
+    this.alignment,
     super.key,
   });
 
@@ -78,7 +82,7 @@ class MElevatedIconButton extends StatelessWidget {
       onPressed: onPressed,
       style: ButtonStyles.elevatedButton(backgroundColor),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: alignment ?? MainAxisAlignment.center,
         children: [
           Icon(iconData),
           const SizedBox(
@@ -86,7 +90,7 @@ class MElevatedIconButton extends StatelessWidget {
           ),
           Text(
             text,
-            style: TextStyles.md,
+            style: TextStyles.sm,
           ),
         ],
       ),
@@ -108,9 +112,11 @@ class MElevatedIconButtonLarge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton.icon(
+    return FilledButton.icon(
       onPressed: onPressed,
-      style: ButtonStyles.elevatedButtonLarge,
+      style: ButtonStyles.elevatedButtonLarge(
+        Theme.of(context).colorScheme.secondary,
+      ),
       icon: Icon(iconData),
       label: Text(
         text,
@@ -134,26 +140,56 @@ class AuthProviderButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLight = Provider.of<ThemeProvider>(context).isLight;
+
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Color.fromRGBO(205, 205, 205, 1),
+            color: Colors.black.withOpacity(0.06),
             blurRadius: 10,
             offset: Offset(0, 2),
           ),
         ],
       ),
-      child: ElevatedButton.icon(
-        onPressed: onPressed,
-        style: ButtonStyles.authProviderButton,
-        icon: Icon(
-          iconData,
-          color: Colors.green.shade800,
+      child: Theme(
+        data: Theme.of(context).copyWith(
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: isLight
+                ? ElevatedButton.styleFrom(
+                    surfaceTintColor: Colors.white,
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.white,
+                  )
+                : ElevatedButton.styleFrom(
+                    surfaceTintColor: Colors.black,
+                    backgroundColor: Colors.grey.shade900,
+                  ),
+          ),
         ),
-        label: Text(
-          text,
-          style: const TextStyle(fontWeight: FontWeight.w400),
+        child: ElevatedButton(
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            minimumSize: const Size(172, 36),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6),
+            ),
+            elevation: 0,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Icon(
+                iconData,
+                color: Colors.green.shade800,
+              ),
+              Text(
+                text,
+                style: const TextStyle(fontWeight: FontWeight.w400),
+              ),
+              const SizedBox.shrink(),
+            ],
+          ),
         ),
       ),
     );

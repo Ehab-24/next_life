@@ -15,7 +15,16 @@ class MTimePicker extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyles.elevatedButton(null),
-      child: Text(_getTimetring(time ?? TimeOfDay.now())),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(_getTimetring(time ?? TimeOfDay.now())),
+            Icon(Icons.access_alarm),
+          ],
+        ),
+      ),
       onPressed: () async {
         final TimeOfDay? _time = await showTimePicker(
           context: context,
